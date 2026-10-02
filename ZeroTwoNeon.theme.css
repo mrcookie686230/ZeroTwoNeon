@@ -1,0 +1,317 @@
+/**
+ * @name Neon Pink
+ * @description Tema maro-inchis cu roz neon, panouri translucide cu contur luminos peste un fundal anime. Inspirata de KukkiHub.
+ * @author Cookie
+ * @version 1.0.0
+ */
+
+:root {
+  /* ===== SCHIMBA ASTA: link direct catre imaginea ta (https://i.imgur.com/xxxx.png) ===== */
+  --np-bg-image: url("https://i.imgur.com/qp8J847.png");
+
+  /* cat de luminoasa e imaginea: 0.6 = intunecat, 1 = original, 1.3 = luminos */
+  --np-bg-brightness: 1.3;
+
+  --np-pink: #ff4f8b;
+  --np-pink-hot: #ff2a74;
+  --np-pink-soft: #ff8fb4;
+  --np-ink: #0d0308;
+  --np-wine: #2a0a17;
+  --np-text: #ffdbe8;
+  --np-dim: #c47a98;
+  --np-link: #ff9dbf;
+
+  --np-panel: rgba(26, 6, 15, 0.45);
+  --np-panel-solid: #14050b;
+  --np-line: rgba(255, 79, 139, 0.34);
+  --np-glow: 0 0 16px rgba(255, 79, 139, 0.32);
+  --np-radius: 14px;
+}
+
+/* ---------- variabile Discord (vechi + noi) ---------- */
+.theme-dark,
+.theme-darker,
+.theme-light {
+  --brand-experiment: var(--np-pink-hot);
+  --brand-500: var(--np-pink-hot);
+  --brand-560: #e01f64;
+  --brand-600: #b8154f;
+  --text-brand: var(--np-link);
+  --text-link: var(--np-link);
+  --header-primary: #fff0f6;
+  --header-secondary: var(--np-dim);
+  --text-normal: var(--np-text);
+  --text-muted: var(--np-dim);
+  --interactive-normal: #e68fae;
+  --interactive-hover: #fff0f6;
+  --interactive-active: #fff;
+  --channels-default: var(--np-dim);
+
+  --background-primary: transparent;
+  --background-secondary: transparent;
+  --background-secondary-alt: transparent;
+  --background-tertiary: transparent;
+  --background-floating: var(--np-panel-solid);
+  --background-accent: rgba(255, 79, 139, 0.18);
+  --background-modifier-hover: rgba(255, 79, 139, 0.10);
+  --background-modifier-selected: rgba(255, 79, 139, 0.20);
+  --background-modifier-active: rgba(255, 79, 139, 0.28);
+  --background-modifier-accent: var(--np-line);
+  --chat-background: transparent;
+  --channeltextarea-background: rgba(26, 6, 15, 0.78);
+  --scrollbar-thin-thumb: var(--np-pink-hot);
+  --scrollbar-auto-thumb: var(--np-pink-hot);
+  --scrollbar-auto-track: transparent;
+
+  /* variabilele mai noi */
+  --background-base-lowest: transparent;
+  --background-base-lower: transparent;
+  --background-base-low: transparent;
+  --background-surface-high: var(--np-panel-solid);
+  --chat-background-default: transparent;
+  --bg-overlay-chat: transparent;
+  --bg-overlay-1: transparent;
+  --bg-overlay-2: transparent;
+  --bg-overlay-3: transparent;
+  --bg-overlay-app-frame: transparent;
+}
+
+/* ---------- fundalul principal ---------- */
+html {
+  background: var(--np-ink) !important;
+}
+
+body,
+#app-mount,
+#app-mount > div,
+[class*="appMount"],
+[class*="app_"],
+[class*="bg__"],
+[class*="layers_"],
+[class*="layer_"]:not([class*="layerContainer"]),
+[class*="base_"],
+[class*="content_"][class*="flex"],
+[class*="appAsidePanelWrapper_"] {
+  background: transparent !important;
+}
+
+/* imaginea sta fixa in spatele intregii aplicatii */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    var(--np-bg-image) center right / cover no-repeat;
+  filter: brightness(var(--np-bg-brightness)) saturate(1.1);
+}
+
+/* ---------- panouri principale ---------- */
+[class*="sidebar_"],
+[class*="sidebarList_"],
+[class*="container_"][class*="privateChannels"],
+nav[aria-label*="Servers"],
+nav[aria-label*="Servere"] {
+  background: var(--np-panel) !important;
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--np-line) !important;
+  border-radius: var(--np-radius);
+}
+
+/* chat-ul si membrii lasa imaginea sa se vada */
+[class*="chatContent_"] {
+  background: rgba(20, 5, 12, 0.18) !important;
+  backdrop-filter: none !important;
+}
+
+[class*="membersWrap_"],
+[class*="members_"] {
+  background: rgba(20, 5, 12, 0.30) !important;
+}
+
+/* bara de sus */
+[class*="title_"][class*="container"],
+[class*="chat_"] > [class*="subtitleContainer_"],
+section[class*="title_"] {
+  background: transparent !important;
+  border-bottom: 1px solid var(--np-line) !important;
+  box-shadow: none !important;
+}
+
+/* ---------- canale ---------- */
+[class*="containerDefault_"] [class*="name_"],
+[class*="channel_"] [class*="name_"] {
+  transition: color 0.15s;
+}
+
+/* categoriile: majuscule, mici, roz deschis */
+[class*="categoryHeader"] [class*="name_"],
+[class*="containerDefault_"] > [class*="mainContent_"] [class*="name_"] {
+  color: var(--np-pink-soft) !important;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+[class*="modeSelected_"] {
+  background: rgba(255, 79, 139, 0.20) !important;
+  box-shadow: inset 0 0 0 1px var(--np-line);
+  border-radius: 10px !important;
+}
+
+[class*="modeSelected_"] [class*="name_"] {
+  color: #fff !important;
+}
+
+[class*="modeUnread_"] [class*="name_"] {
+  color: #fff0f6 !important;
+}
+
+/* iconitele canalelor in roz */
+[class*="icon_"][class*="iconBase"],
+[class*="linkTop_"] svg,
+[class*="iconContainer_"] svg {
+  color: var(--np-pink);
+}
+
+/* ---------- badge-uri / mentiuni ---------- */
+[class*="numberBadge_"],
+[class*="lowerBadge_"] [class*="numberBadge_"] {
+  background: var(--np-pink-hot) !important;
+  color: #fff !important;
+  box-shadow: var(--np-glow);
+}
+
+[class*="unreadMentionsBar"] {
+  background: var(--np-pink-hot) !important;
+}
+
+/* ---------- lista de servere ---------- */
+[class*="listItem_"] [class*="icon_"][class*="selected"] {
+  border-radius: 50% !important;
+}
+
+[class*="pill_"] [class*="item_"] {
+  background: var(--np-pink) !important;
+  box-shadow: var(--np-glow);
+}
+
+[class*="selected_"] > [class*="wrapper_"] {
+  box-shadow: 0 0 0 2px var(--np-pink), var(--np-glow);
+  border-radius: 50%;
+}
+
+/* ---------- mesaje ---------- */
+[class*="messageListItem_"] [class*="message_"]:hover {
+  background: rgba(255, 79, 139, 0.07) !important;
+}
+
+[class*="username_"] {
+  font-weight: 600;
+}
+
+[class*="timestamp_"] {
+  color: var(--np-dim) !important;
+}
+
+[class*="mentioned_"] {
+  background: rgba(255, 79, 139, 0.14) !important;
+  box-shadow: inset 3px 0 0 var(--np-pink);
+}
+
+.mention,
+[class*="mention_"][class*="wrapper"] {
+  background: rgba(255, 79, 139, 0.26) !important;
+  color: #fff0f6 !important;
+  border-radius: 6px;
+}
+
+/* ---------- caseta de mesaj cu contur luminos ---------- */
+[class*="channelTextArea_"] {
+  background: rgba(26, 6, 15, 0.78) !important;
+  border: 1px solid var(--np-pink) !important;
+  border-radius: 18px !important;
+  box-shadow: var(--np-glow);
+  backdrop-filter: blur(8px);
+}
+
+[class*="channelTextArea_"] [class*="scrollableContainer_"] {
+  background: transparent !important;
+  border-radius: 18px !important;
+}
+
+[class*="channelTextArea_"] svg {
+  color: var(--np-pink);
+}
+
+/* ---------- lista de membri ---------- */
+[class*="membersGroup_"],
+h3[class*="membersGroup_"] {
+  color: var(--np-pink-soft) !important;
+  letter-spacing: 0.06em;
+}
+
+[class*="member_"]:hover [class*="layout_"] {
+  background: rgba(255, 79, 139, 0.12) !important;
+  border-radius: 10px;
+}
+
+/* ---------- panoul user-ului din stanga jos ---------- */
+[class*="panels_"] > [class*="container_"],
+section[class*="panels_"] {
+  background: var(--np-panel) !important;
+  border: 1px solid var(--np-line);
+  border-radius: var(--np-radius);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- popouts, meniuri, modale ---------- */
+[class*="menu_"],
+[class*="popout_"],
+[class*="layer_"] [class*="container_"][class*="theme"],
+[class*="modal_"],
+[class*="tooltip_"] {
+  background: var(--np-panel-solid) !important;
+  border: 1px solid var(--np-line) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), var(--np-glow) !important;
+}
+
+[class*="item_"][class*="focused"],
+[class*="menu_"] [class*="focused_"] {
+  background: var(--np-pink-hot) !important;
+  color: #fff !important;
+}
+
+/* ---------- butoane ---------- */
+[class*="lookFilled_"][class*="colorBrand_"] {
+  background: var(--np-pink-hot) !important;
+}
+
+[class*="lookFilled_"][class*="colorBrand_"]:hover {
+  background: var(--np-pink) !important;
+  box-shadow: var(--np-glow);
+}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#b8154f, var(--np-pink-hot));
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ---------- selectie text ---------- */
+::selection {
+  background: var(--np-pink-hot);
+  color: #fff;
+}
+
+/* ---------- accesibilitate ---------- */
+:focus-visible {
+  outline: 2px solid var(--np-pink-soft) !important;
+  outline-offset: 2px;
+}
